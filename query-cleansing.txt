@@ -1,0 +1,9 @@
+DELETE FROM db_datareader.history;
+DELETE FROM db_datareader.transactions;
+DELETE FROM db_datareader.users;
+DELETE FROM db_datareader.asset_configs;
+DELETE FROM db_datareader.asset_spareparts;
+DELETE FROM db_datareader.assets
+DELETE FROM db_datareader.configurations;
+DELETE FROM db_datareader.spareparts;
+DELETE FROM db_datareader.locations;
