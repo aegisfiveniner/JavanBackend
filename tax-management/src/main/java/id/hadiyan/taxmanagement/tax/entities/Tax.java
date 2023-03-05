@@ -56,4 +56,10 @@ public class Tax {
 
     @Column(name = "approved_by")
     private String approvedBy;
+
+    @Column(name = "rejected_at")
+    private LocalDateTime rejectedAt;
+
+    @Column(name = "rejected_by")
+    private String rejectedBy;
 }

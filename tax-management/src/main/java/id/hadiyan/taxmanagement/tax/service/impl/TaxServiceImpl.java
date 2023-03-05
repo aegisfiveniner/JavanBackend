@@ -81,7 +81,7 @@ public class TaxServiceImpl implements TaxService {
         String username = ((Jwt) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getSubject();
         User user = userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException("User not found"));
         tax.setStatus(TaxStatus.REJECTED);
-        tax.setApprovedAt(LocalDateTime.now());
+        tax.setRe(LocalDateTime.now());
         tax.setApprovedBy(user.getUsername());
         taxRepository.save(tax);
     }
