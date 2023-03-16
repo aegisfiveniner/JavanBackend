@@ -1,0 +1,44 @@
+# ------------------------------
+--- # DATABASE CONFIGURATION
+# ------------------------------
+spring:
+  # Datasource
+  datasource:
+    url: jdbc:postgresql://localhost:5432/javan_pelaporanpajak
+    username: postgres
+    password: pgsqlpassword1
+    driver-class-name: org.postgresql.Driver
+  # JPA Configuration
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: validate
+
+# ------------------------------
+--- # APP JWT CONFIGURATION
+# ------------------------------
+usermanagement:
+  app:
+    jwtSecret: testing123
+    jwtExpiration: 3600000
+
+
+# ------------------------------
+--- # SERVER CONFIGURATION
+# ------------------------------
+server:
+  port: 8082
+
+# ------------------------------
+--- # KAFKA CONFIGURATION
+# ------------------------------
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: javanbackend
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
