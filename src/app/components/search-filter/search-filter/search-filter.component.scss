@@ -1,0 +1,21 @@
+.search-filter {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  button {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.filter {
+  display: flex;
+  gap: 8px;
+}

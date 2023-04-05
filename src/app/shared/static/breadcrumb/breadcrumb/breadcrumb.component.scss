@@ -1,0 +1,11 @@
+@import "variables";
+
+.breadcrumb{
+  min-height: 80px;
+  padding-top: 43px;
+  padding-left: 33px;
+  font-weight: 400;
+  font-size: 15px;
+  background: $white-smog;
+  box-shadow: $shadow;
+}

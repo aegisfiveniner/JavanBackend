@@ -1,0 +1,29 @@
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  & > div {
+    flex-basis: calc(50% - 1rem);
+  }
+
+  &.wrapper {
+    max-width: 90%;
+  }
+}
+
+::ng-deep .table.small {
+  border-spacing: 0 8px;
+  thead th,
+  tbody tr td{
+    padding: 8px;
+    text-align: left;
+
+  }
+
+  tbody tr td {
+    padding: 5px 8px;
+    line-height: 1;
+    font-size: 12px;
+  }
+}

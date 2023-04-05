@@ -1,0 +1,30 @@
+<app-card-panel [title]="'Inactive Assets'">
+  <ng-container content>
+    <div class="text-right">
+      <app-sort (OnSort)="sortData(!isSort)"></app-sort>
+      <table class="table small" aria-label="table asset">
+        <thead>
+        <th>Asset name </th>
+        <th>Location</th>
+        <th>Status</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of assets">
+            <td>
+              {{ asset.assetName }}
+            </td>
+            <td>
+              {{ asset.locationId | location}}
+            </td>
+            <td>
+              <app-chip [text]="asset.currentStatus"
+                        [background]="statusConfig.getColor(asset.currentStatus)"
+              ></app-chip>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+</app-card-panel>

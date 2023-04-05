@@ -1,0 +1,42 @@
+
+@import "variables";
+
+progress {
+  position: relative;
+  border:  1px solid $color-black;
+  background-color: aqua;
+}
+
+progress::before,
+progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+progress::before {
+  width: 100%;
+  background: $white-smog;
+}
+
+progress::after {
+  background: brown;
+}
+
+.green progress::after {
+  background-color: $color-success;
+}
+
+.yellow progress::after {
+  background-color: $color-warning;
+}
+
+.red progress::after {
+  background-color: $color-danger;
+}
+
+
+
+

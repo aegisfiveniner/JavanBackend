@@ -1,0 +1,38 @@
+@import "variables";
+
+:host {
+  height: 100%;
+  width: 100%;
+  display:block;
+  background-color: $base-color;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  form {
+    width: 271px;
+
+    input {
+      width: 100%;
+      border: none;
+      margin-bottom: 8px;
+    }
+  }
+
+  .act {
+    text-align: right;
+  }
+
+  button {
+    padding: 10px 20px;
+    text-align: right;
+  }
+
+  .note {
+    font-size: 10px;
+  }
+}

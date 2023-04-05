@@ -1,0 +1,14 @@
+@import "variables";
+
+.input {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid $color-black;
+  box-shadow: inset 0 4px 4px rgb(0 0 0 / 25%);
+  font-size: $font-size-sm;
+  outline: none;
+
+  &::placeholder {
+    color: $color-black;
+  }
+}

@@ -1,0 +1,48 @@
+import { IAsset } from '../../../assets/shared/model/asset.model';
+
+export const DBAssetInactiveReview: IAsset[] = [
+  {
+    id: 1,
+    assetName: 'Inactive 1',
+    serialNumber: '111',
+    type: 'Type 1',
+    locationId: 1,
+    modelNumber: '101111',
+    manufacturer: 'Manufacturer 1',
+    currentStatus: 'Running',
+    downtime: 90,
+  },
+  {
+    id: 2,
+    assetName: 'Inactive 2',
+    serialNumber: '222',
+    type: 'Type 2',
+    locationId: 2,
+    modelNumber: '202222',
+    manufacturer: 'Manufacturer 2',
+    currentStatus: 'Running',
+    downtime: 20,
+  },
+  {
+    id: 3,
+    assetName: 'Inactive 3',
+    serialNumber: '333',
+    type: 'Type 3',
+    locationId: 3,
+    modelNumber: '303333',
+    manufacturer: 'Manufacturer 3',
+    currentStatus: 'Running',
+    downtime: 50,
+  },
+  {
+    id: 4,
+    assetName: 'Inactive 4',
+    serialNumber: '444',
+    type: 'Type 4',
+    locationId: 4,
+    modelNumber: '404444',
+    manufacturer: 'Manufacturer 4',
+    currentStatus: 'Running',
+    downtime: 70,
+  },
+];

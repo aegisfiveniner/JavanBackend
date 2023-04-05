@@ -1,0 +1,29 @@
+<app-card-panel [title]="'Assets on maintenance'">
+  <ng-container content>
+    <div class="text-right">
+      <app-sort (OnSort)="sortData(!isSort)"></app-sort>
+      <table class="table small table-inactive" aria-label="table asset">
+        <thead>
+        <th>Asset name </th>
+        <th>Location</th>
+        <th>Downtime</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let asset of assets">
+          <td>
+            {{ asset.assetName }}
+          </td>
+          <td>
+            {{ asset.locationId | location}}
+          </td>
+          <td>
+            <div class="progressbar">
+              <app-progressbar [width]="asset.downtime" [bgColor]="getBg(asset.downtime)"></app-progressbar>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</app-card-panel>

@@ -1,0 +1,30 @@
+<app-card-panel [title]="'Empty Spare Parts'">
+  <ng-container content>
+    <div class="text-right">
+      <app-sort (OnSort)="sortData(!isSort)"></app-sort>
+      <table class="table small" aria-label="table asset">
+        <thead>
+        <th>Spare parts name </th>
+        <th>Location</th>
+        <th>Status</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sparepart of spareparts">
+            <td>
+              {{ sparepart.sparepartName}}
+            </td>
+            <td>
+              {{ sparepart.locationId | location}}
+            </td>
+            <td>
+              <app-chip [text]="sparepart.currentStatus"
+                        [background]="statusConfig.getColor(sparepart.quantity)"
+              ></app-chip>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+</app-card-panel>

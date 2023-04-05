@@ -1,0 +1,49 @@
+<table class="table" aria-label="table asset">
+  <thead>
+    <th>id</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Location</th>
+    <th>Model number</th>
+    <th>Manufacturer</th>
+    <th>Quantity</th>
+    <th>Current status</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of dataTable; let index = index;">
+    <td>
+      {{ data.id }}
+    </td>
+    <td>
+      {{ data.sparepartName }}
+    </td>
+    <td>
+      {{ data.type }}
+    </td>
+    <td>
+      Dolor
+    </td>
+    <td>
+      {{ data.modelNumber }}
+    </td>
+    <td>
+      {{ data.manufacturer }}
+    </td>
+    <td>
+      {{ data.quantity }}
+    </td>
+    <td>
+      <div class="status">
+        <app-chip [text]="data.currentStatus"
+                  [background]="getStatus(data.quantity)"
+        ></app-chip>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot *ngIf="dataTable.length === 0">
+  <tr>
+    <td>Data Not Found</td>
+  </tr>
+  </tfoot>
+</table>

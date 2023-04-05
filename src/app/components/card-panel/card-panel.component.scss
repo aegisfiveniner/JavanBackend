@@ -1,0 +1,10 @@
+@import "variables";
+
+.card-panel {
+  padding: 1rem;
+  background: $color-light-red;
+  
+  h2 {
+    text-align: center;
+  }
+}

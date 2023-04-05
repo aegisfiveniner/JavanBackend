@@ -1,0 +1,30 @@
+<div id="sidebar" class="sidebar">
+  <div class="profile">
+    <div class="photo">
+      <img [src]="photo" alt="'user'" />
+    </div>
+    <div class="name">Migdalia Mighty</div>
+    <div class="act">
+      <span>
+        <img [src]="icon.home.src" [alt]="icon.home.alt" (click)="home()" />
+      </span>
+      <span>
+        <img
+          [src]="icon.logout.src"
+          [alt]="icon.logout.alt"
+          (click)="logout()"
+        />
+      </span>
+    </div>
+  </div>
+  <ul class="navs">
+    <li
+      *ngFor="let nav of navigations"
+      class="nav"
+      [class.active]="nav.path === activeTab"
+      (click)="navigate(nav.path)"
+    >
+      <a>{{ nav.name }}</a>
+    </li>
+  </ul>
+</div>
