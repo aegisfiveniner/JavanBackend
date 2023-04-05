@@ -1,0 +1,8 @@
+<div class="modal" *ngIf="open | async">
+  <div class="modal-content">
+    <div class="modal-close">
+      <img [src]="closeIcon.src" alt="close" (click)="close()">
+    </div>
+    <ng-content select="[content]"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <app-search-filter
+    [textAdd]="'Add Configuration'"
+    (OnSearch)="search($event)"
+    (OnSort)="sortData(!isSort)"
+  ></app-search-filter>
+  <div>
+    <app-configuration-table [dataTable]="configurations"></app-configuration-table>
+  </div>
+</div>

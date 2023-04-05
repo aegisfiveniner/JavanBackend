@@ -1,0 +1,34 @@
+@import "variables";
+
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+
+  thead {
+    background-color: $color-grey;
+
+    th {
+      padding: 10px;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-default;
+    }
+  }
+
+  tbody {
+    vertical-align: center;
+
+    tr {
+      background: $white-smog;
+      box-shadow: $shadow;
+
+      td {
+        padding: 16px;
+        text-align: center;
+        font-size: $font-size-sm;
+        line-height: 1.5;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import "variables";
+
+@mixin hover() {
+  &:hover { @content; }
+}
+
+$contrast: 60;
+@function set-button-text-color($color) {
+  @if (lightness( $color ) > $contrast) {
+    @return $color-black;
+  }
+  @else {
+    @return $color-white;
+  }
+}
+
+$button-types:(
+  "light": $color-blue-accent,
+  "danger": $color-danger,
+  "warning": $color-warning,
+  "secondary": $color-grey,
+  "success": $color-success
+);
+
+.btn {
+  padding: 7px 12px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 5px;
+  border: none;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  background-color: $white-smog;
+
+  &:hover {
+    background-color: darken($color-white, 20%);
+  }
+
+  &.btn-flat {
+    border-radius: 0;
+  }
+
+}
+
+// Generate Button
+// Full
+@each $name, $bg in $button-types {
+  .btn-#{$name} {
+    background-color: #{$bg};
+    color: set-button-text-color($bg);
+
+    @include hover() {
+      background-color: darken($bg, 8%);
+      border-color: transparent;
+    }
+  }
+}

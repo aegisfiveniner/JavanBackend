@@ -1,0 +1,65 @@
+@import "variables";
+
+.add-form {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+
+  .upload {
+    width: 40%;
+    background-color: $color-grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100px;
+    }
+
+    .input-file {
+      opacity: 0;
+
+      & + label {
+        cursor: pointer;
+        padding: 10px;
+        background-color: $white-smog;
+        font-size: 14px;
+        box-shadow: $shadow;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .form {
+    width: 100%;
+    padding: 16px;
+    background-color: $white-smog;
+
+    .input-group {
+      display: flex;
+      margin-bottom: 8px;
+
+      label {
+        font-size: 12px;
+        min-width: 120px;
+      }
+
+      input {
+        width: 60%;
+        max-width: 315px;
+      }
+    }
+
+    .act {
+      width: 100%;
+      text-align: center;
+
+      button {
+        width: 200px;
+        padding: 10px;
+        margin-top: 32px;
+      }
+    }
+  }
+}

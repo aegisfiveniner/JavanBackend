@@ -1,0 +1,26 @@
+<!--suppress ALL -->
+<div class="search-filter">
+  <div class="search">
+    <input type="text" placeholder="Search" class="input"
+           [(ngModel)]="keyword"
+           (input)="search()"
+    >
+    <button class="btn" (click)="search()">Search</button>
+  </div>
+
+  <div class="filter">
+    <div class="download">
+      <button class="btn btn-secondary">
+        <a [href]="download" download="">Download</a>
+        <span> <img [src]="icon.download.src" [alt]="icon.download.alt"></span>
+      </button>
+    </div>
+    <div class="sort">
+      <app-sort (OnSort)="sort()"></app-sort>
+    </div>
+    <div class="add">
+      <button class="btn btn-success"
+              (click)="add()">{{ textAdd }}</button>
+    </div>
+  </div>
+</div>

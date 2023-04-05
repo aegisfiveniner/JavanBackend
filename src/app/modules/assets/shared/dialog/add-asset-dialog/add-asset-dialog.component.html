@@ -1,0 +1,49 @@
+<app-modal>
+  <ng-container content>
+    <div class="add-form">
+      <div class="upload">
+        <img [src]="image.gallery.src" [alt]="image.gallery.alt">
+        <input type="file" name="file" id="file" class="input-file">
+        <label for="file">Browse image</label>
+      </div>
+      <div class="form">
+        <div class="input-group">
+          <label>Id</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Name</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Type</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Serial Number</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Location</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Model Number</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Manufacturer</label>
+          <input type="text" class="input">
+        </div>
+        <div class="input-group">
+          <label>Current status</label>
+          <input type="text" class="input">
+        </div>
+
+        <div class="act">
+          <button class="btn btn-success btn-flat">Save</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-modal>

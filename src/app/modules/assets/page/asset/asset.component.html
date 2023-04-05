@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <app-search-filter
+    [textAdd]="'Add Asset'"
+    (OnSearch)="search($event)"
+    (OnSort)="sortData(!isSort)"
+    (OnAdd)="addAsset()"
+  ></app-search-filter>
+  <app-asset-table [dataTable]="dataTable"></app-asset-table>
+</div>
+
+<app-add-asset-dialog></app-add-asset-dialog>

@@ -1,0 +1,30 @@
+
+<div class="login">
+  <form>
+    <div>
+      <input type="text" class="input"
+             placeholder="username"
+             [(ngModel)]="username"
+             [ngModelOptions]="{standalone: true}"
+      >
+    </div>
+    <div>
+      <input type="password" class="input"
+             placeholder="password"
+             [(ngModel)]="password"
+             [ngModelOptions]="{standalone: true}"
+      >
+    </div>
+    <div class="act">
+      <button class="btn btn-light"
+              (click)="login()"
+      >Login</button>
+    </div>
+    <div class="note">
+      username: admin | password: 1234
+    </div>
+
+  </form>
+
+
+</div>
