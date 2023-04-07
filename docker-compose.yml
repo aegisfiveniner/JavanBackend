@@ -17,6 +17,7 @@ services:
       - 8082:8080
     depends_on:
       - mysql
+      - rabbitmq
 
   mysql:
     image: mysql:8.0
