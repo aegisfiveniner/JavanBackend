@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import id.javan.user.dto.UserDTO;
 import id.javan.user.entity.User;
 import id.javan.user.service.UserService;
 
@@ -31,7 +32,7 @@ public class UserController {
 
   @PostMapping("")
   @PreAuthorize("hasRole('ADMIN')")
-  public User createUser(@RequestBody User user) {
+  public User createUser(@RequestBody UserDTO user) {
     return userService.createUser(user);
   }
 

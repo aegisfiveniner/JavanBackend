@@ -1,10 +1,10 @@
-package id.javan.user.payload.request;
+package id.javan.user.dto;
 
 import java.util.Set;
 
 import javax.validation.constraints.*;
 
-public class SignupRequest {
+public class UserDTO {
   @NotBlank
   @Size(min = 3, max = 20)
   private String username;

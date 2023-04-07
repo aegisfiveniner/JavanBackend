@@ -1,9 +1,9 @@
-package id.javan.user.payload.response;
+package id.javan.user.dto;
 
-public class MessageResponse {
+public class MessageDTO {
   private String message;
 
-  public MessageResponse(String message) {
+  public MessageDTO(String message) {
     this.message = message;
   }
 

@@ -1,11 +1,17 @@
 package id.javan.user.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import id.javan.user.dto.UserDTO;
+import id.javan.user.entity.Role;
+import id.javan.user.entity.RoleEnum;
 import id.javan.user.entity.User;
 import id.javan.user.events.publishers.UserCreatedPublisher;
 import id.javan.user.events.publishers.UserDeletedPublisher;
@@ -22,6 +28,9 @@ public class UserService {
   RoleRepository roleRepository;
 
   @Autowired
+  PasswordEncoder encoder;
+
+  @Autowired
   UserCreatedPublisher userCreatedPublisher;
 
   @Autowired
@@ -34,7 +43,54 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public User createUser(User user) {
+  public User createUser(UserDTO userDTO) {
+    if (userRepository.existsByUsername(userDTO.getUsername())) {
+      throw new RuntimeException("Error: Username is already taken!");
+    }
+
+    if (userRepository.existsByEmail(userDTO.getEmail())) {
+      throw new RuntimeException("Error: Email is already in use!");
+    }
+
+    User user = new User(
+      userDTO.getUsername(), 
+      userDTO.getEmail(),
+      encoder.encode(userDTO.getPassword()));
+
+    Set<String> strRoles = userDTO.getRole();
+    Set<Role> roles = new HashSet<>();
+
+    if (strRoles == null) {
+      Role makerRole = roleRepository.findByName(RoleEnum.ROLE_MAKER)
+          .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+      roles.add(makerRole);
+    } else {
+      strRoles.forEach(role -> {
+        switch (role) {
+        case "admin":
+          Role adminRole = roleRepository.findByName(RoleEnum.ROLE_ADMIN)
+            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+          roles.add(adminRole);
+          break;
+        case "approver":
+          Role approverRole = roleRepository.findByName(RoleEnum.ROLE_APPROVER)
+            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+          roles.add(approverRole);
+          break;
+        case "checker":
+          Role checkerRole = roleRepository.findByName(RoleEnum.ROLE_CHECKER)
+            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+          roles.add(checkerRole);
+          break;
+        default:
+          Role userRole = roleRepository.findByName(RoleEnum.ROLE_MAKER)
+            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+          roles.add(userRole);
+        }
+      });
+    }
+    user.setRoles(roles);
+    
     User savedUser = userRepository.save(user);
     userCreatedPublisher.publish(savedUser);
     return savedUser;

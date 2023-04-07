@@ -1,8 +1,8 @@
-package id.javan.user.payload.request;
+package id.javan.user.dto;
 
 import javax.validation.constraints.NotBlank;
 
-public class LoginRequest {
+public class LoginDTO {
 	@NotBlank
   private String username;
 
