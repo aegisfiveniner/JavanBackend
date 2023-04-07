@@ -2,19 +2,38 @@ package id.javan.user.entity;
 
 import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Setter 
-@Getter
 @Table(name = "roles")
 public class Role {
-  @Id 
+  @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @Enumerated(EnumType.STRING)
   @Column(length = 20)
   private RoleEnum name;
+
+  public Role() {
+
+  }
+
+  public Role(RoleEnum name) {
+    this.name = name;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public RoleEnum getName() {
+    return name;
+  }
+
+  public void setName(RoleEnum name) {
+    this.name = name;
+  }
 }

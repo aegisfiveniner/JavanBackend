@@ -20,34 +20,39 @@ import org.springframework.web.bind.annotation.RestController;
 import id.javan.user.entity.User;
 import id.javan.user.service.UserService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
-
   @Autowired
   private UserService userService;
 
-  @GetMapping("/users")
-  // @PreAuthorize("hasRole('ADMIN')")
+  @GetMapping("")
+  @PreAuthorize("hasRole('ADMIN')")
   public List<User> getAllUsers() {
     return userService.getAllUsers();
   }
 
-  @PostMapping("/users")
-  // @PreAuthorize("hasRole('ADMIN')")
+  @PostMapping("")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<Object> createUser(@RequestBody User user) {
     return userService.createUser(user);
   }
 
-  @GetMapping("/users/{id}")
-  // @PreAuthorize("hasRole('ADMIN')")
-  public Optional<User> findUserById(@PathVariable Integer id) {
+  @GetMapping("/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public Optional<User> findUserById(@PathVariable Long id) {
     return userService.findUserById(id);
   }
 
-  @PatchMapping("/users/{id}")
-  // @PreAuthorize("hasRole('ADMIN')")
-  public ResponseEntity<Object> updateUser(@PathVariable Integer id, @RequestBody User user) {
+  @PatchMapping("/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public User updateUser(@PathVariable Long id, @RequestBody User user) {
     return userService.updateUser(user);
+  }
+
+  @DeleteMapping("/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public String deleteUser(@PathVariable Long id) {
+    return userService.deleteById(id);
   }
 }
