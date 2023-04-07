@@ -1,19 +1,12 @@
 package id.javan.user.service;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import id.javan.user.entity.Role;
-import id.javan.user.entity.RoleEnum;
 import id.javan.user.entity.User;
-import id.javan.user.payload.request.SignupRequest;
 import id.javan.user.repository.UserRepository;
 import id.javan.user.repository.RoleRepository;
 
@@ -29,7 +22,7 @@ public class UserService {
     return userRepository.findAll();
   }
 
-  public User createUser(SignupRequest user) {
+  public User createUser(User user) {
     return userRepository.save(user);
   }
 
