@@ -13,9 +13,6 @@ import id.javan.tax.dto.UserDTO;
 import id.javan.tax.entity.Role;
 import id.javan.tax.entity.RoleEnum;
 import id.javan.tax.entity.User;
-import id.javan.tax.events.publishers.UserCreatedPublisher;
-import id.javan.tax.events.publishers.UserDeletedPublisher;
-import id.javan.tax.events.publishers.UserUpdatedPublisher;
 import id.javan.tax.repository.UserRepository;
 import id.javan.tax.repository.RoleRepository;
 
@@ -29,15 +26,6 @@ public class UserService {
 
   @Autowired
   PasswordEncoder encoder;
-
-  @Autowired
-  UserCreatedPublisher userCreatedPublisher;
-
-  @Autowired
-  UserUpdatedPublisher userUpdatedPublisher;
-
-  @Autowired
-  UserDeletedPublisher userDeletedPublisher;
 
   public List<User> getAllUsers() {
     return userRepository.findAll();
@@ -92,7 +80,6 @@ public class UserService {
     user.setRoles(roles);
     
     User savedUser = userRepository.save(user);
-    userCreatedPublisher.publish(savedUser);
     return savedUser;
   }
 
@@ -102,13 +89,11 @@ public class UserService {
 
   public String deleteUserById(Long id) {
     userRepository.deleteById(id);
-    userDeletedPublisher.publish(id);
     return "Successfully deleted user with id: " + id;
   }
 
   public User updateUser(User user) {
     User savedUser = userRepository.save(user);
-    userUpdatedPublisher.publish(savedUser);
     return savedUser;
   }
 }

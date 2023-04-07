@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import id.javan.tax.entity.User;
+import id.javan.tax.entity.Tax;
 
-public interface TaxRepository extends JpaRepository<User, Long> {
+public interface TaxRepository extends JpaRepository<Tax, Long> {
 }
