@@ -216,6 +216,135 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Taxes",
+			"item": [
+				{
+					"name": "List taxes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{taxServiceUrl}}/taxes",
+							"host": [
+								"{{taxServiceUrl}}"
+							],
+							"path": [
+								"taxes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create taxes report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"taxId\", pm.response.json().id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receiptNumber\": \"123\",\n    \"status\": \"draft\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{taxServiceUrl}}/taxes",
+							"host": [
+								"{{taxServiceUrl}}"
+							],
+							"path": [
+								"taxes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get taxes report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approve\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{taxServiceUrl}}/taxes/:id",
+							"host": [
+								"{{taxServiceUrl}}"
+							],
+							"path": [
+								"taxes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{taxId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve taxes report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"approve\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{taxServiceUrl}}/taxes/:id/approve",
+							"host": [
+								"{{taxServiceUrl}}"
+							],
+							"path": [
+								"taxes",
+								":id",
+								"approve"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -252,6 +381,11 @@
 		{
 			"key": "userServiceUrl",
 			"value": "localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "taxServiceUrl",
+			"value": "localhost:8081/api",
 			"type": "string"
 		},
 		{
