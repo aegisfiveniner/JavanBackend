@@ -2,9 +2,15 @@ package id.javan.tax.dto;
 
 import java.util.Set;
 
-import javax.validation.constraints.*;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class UserDTO {
+  @Id
+  private Long id;
+
   @NotBlank
   @Size(min = 3, max = 20)
   private String username;
@@ -19,6 +25,14 @@ public class UserDTO {
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getUsername() {
     return username;

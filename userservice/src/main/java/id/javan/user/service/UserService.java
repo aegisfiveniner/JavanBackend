@@ -1,23 +1,18 @@
 package id.javan.user.service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import id.javan.user.converter.UserConverter;
 import id.javan.user.dto.UserDTO;
-import id.javan.user.entity.Role;
-import id.javan.user.entity.RoleEnum;
 import id.javan.user.entity.User;
-import id.javan.user.events.publishers.UserCreatedPublisher;
-import id.javan.user.events.publishers.UserDeletedPublisher;
-import id.javan.user.events.publishers.UserUpdatedPublisher;
+import id.javan.user.event.publisher.UserCreatedPublisher;
+import id.javan.user.event.publisher.UserDeletedPublisher;
+import id.javan.user.event.publisher.UserUpdatedPublisher;
 import id.javan.user.repository.UserRepository;
-import id.javan.user.repository.RoleRepository;
 
 @Service
 public class UserService {
@@ -25,19 +20,16 @@ public class UserService {
   private UserRepository userRepository;
 
   @Autowired
-  RoleRepository roleRepository;
+  private UserConverter userConverter;
 
   @Autowired
-  PasswordEncoder encoder;
+  private UserCreatedPublisher userCreatedPublisher;
 
   @Autowired
-  UserCreatedPublisher userCreatedPublisher;
+  private UserUpdatedPublisher userUpdatedPublisher;
 
   @Autowired
-  UserUpdatedPublisher userUpdatedPublisher;
-
-  @Autowired
-  UserDeletedPublisher userDeletedPublisher;
+  private UserDeletedPublisher userDeletedPublisher;
 
   public List<User> getAllUsers() {
     return userRepository.findAll();
@@ -52,45 +44,7 @@ public class UserService {
       throw new RuntimeException("Error: Email is already in use!");
     }
 
-    User user = new User(
-      userDTO.getUsername(), 
-      userDTO.getEmail(),
-      encoder.encode(userDTO.getPassword()));
-
-    Set<String> strRoles = userDTO.getRole();
-    Set<Role> roles = new HashSet<>();
-
-    if (strRoles == null) {
-      Role makerRole = roleRepository.findByName(RoleEnum.ROLE_MAKER)
-          .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-      roles.add(makerRole);
-    } else {
-      strRoles.forEach(role -> {
-        switch (role) {
-        case "admin":
-          Role adminRole = roleRepository.findByName(RoleEnum.ROLE_ADMIN)
-            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(adminRole);
-          break;
-        case "approver":
-          Role approverRole = roleRepository.findByName(RoleEnum.ROLE_APPROVER)
-            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(approverRole);
-          break;
-        case "checker":
-          Role checkerRole = roleRepository.findByName(RoleEnum.ROLE_CHECKER)
-            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(checkerRole);
-          break;
-        default:
-          Role userRole = roleRepository.findByName(RoleEnum.ROLE_MAKER)
-            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(userRole);
-        }
-      });
-    }
-    user.setRoles(roles);
-    
+    User user = userConverter.FormToEntity(userDTO);
     User savedUser = userRepository.save(user);
     userCreatedPublisher.publish(savedUser);
     return savedUser;

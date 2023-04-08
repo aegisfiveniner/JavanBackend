@@ -1,4 +1,4 @@
-package id.javan.user.events.publishers;
+package id.javan.user.event.publisher;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import id.javan.user.converter.UserConverter;
+import id.javan.user.dto.UserDTO;
 import id.javan.user.entity.User;
 
 @Service
@@ -16,6 +18,9 @@ public class UserCreatedPublisher {
   @Autowired
   private AmqpTemplate rabbitTemplate;
 
+  @Autowired
+  private UserConverter userConverter;
+
   @Value("userservice")
   private String exchange;
 
@@ -23,8 +28,8 @@ public class UserCreatedPublisher {
   private String routingkey;
 
   public void publish(User user) {
-    rabbitTemplate.convertAndSend(exchange, routingkey, user);
+    UserDTO userDTO = userConverter.EntityToForm(user);
+    rabbitTemplate.convertAndSend(exchange, routingkey, userDTO);
     logger.info("Send msg : {}", user);
-    System.out.println("Send msg : " + user);
   }
 }

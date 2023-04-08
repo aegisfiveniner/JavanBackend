@@ -1,11 +1,11 @@
-package id.javan.tax.events.listeners;
+package id.javan.user.event.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import id.javan.tax.entity.User;
+import id.javan.user.entity.User;
 
 @Component
 public class UserCreatedListener {

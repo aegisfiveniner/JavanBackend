@@ -1,11 +1,8 @@
 package id.javan.tax.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -16,19 +13,22 @@ public class Tax implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
+
   @NotBlank
   @Size(max = 20)
   @Column(name = "receipt_number")
   private String receiptNumber;
 
-  private String status;
+  private TaxStatusEnum status;
 
   public Tax() {
   }
 
-  public Tax(String receiptNumber, String status) {
+  public Tax(String receiptNumber) {
     this.receiptNumber = receiptNumber;
-    this.status = status;
   }
 
   public Long getId() {
@@ -47,11 +47,19 @@ public class Tax implements Serializable {
     this.receiptNumber = receiptNumber;
   }
 
-  public String getStatus() {
+  public TaxStatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(TaxStatusEnum status) {
     this.status = status;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

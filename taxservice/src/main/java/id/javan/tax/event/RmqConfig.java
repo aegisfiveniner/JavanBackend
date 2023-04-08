@@ -1,4 +1,4 @@
-package id.javan.user.events;
+package id.javan.tax.event;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;

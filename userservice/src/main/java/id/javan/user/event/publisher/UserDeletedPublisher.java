@@ -1,4 +1,4 @@
-package id.javan.user.events.publishers;
+package id.javan.user.event.publisher;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +23,5 @@ public class UserDeletedPublisher {
   public void publish(Long id) {
     rabbitTemplate.convertAndSend(exchange, routingkey, id);
     logger.info("Send msg : {}", id);
-    System.out.println("Send msg = " + id);
   }
 }

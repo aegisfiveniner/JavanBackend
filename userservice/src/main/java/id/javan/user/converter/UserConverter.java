@@ -1,57 +1,36 @@
-package id.javan.tax.service;
+package id.javan.user.converter;
 
 import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
-import id.javan.tax.dto.UserDTO;
-import id.javan.tax.entity.Role;
-import id.javan.tax.entity.RoleEnum;
-import id.javan.tax.entity.User;
-import id.javan.tax.repository.UserRepository;
-import id.javan.tax.repository.RoleRepository;
+import id.javan.user.dto.UserDTO;
+import id.javan.user.entity.Role;
+import id.javan.user.entity.RoleEnum;
+import id.javan.user.entity.User;
+import id.javan.user.repository.RoleRepository;
 
-@Service
-public class UserService {
+public class UserConverter {
   @Autowired
-  private UserRepository userRepository;
+  private PasswordEncoder encoder;
 
   @Autowired
-  RoleRepository roleRepository;
+  private RoleRepository roleRepository;
 
-  @Autowired
-  PasswordEncoder encoder;
-
-  public List<User> getAllUsers() {
-    return userRepository.findAll();
-  }
-
-  public User createUser(UserDTO userDTO) {
-    if (userRepository.existsByUsername(userDTO.getUsername())) {
-      throw new RuntimeException("Error: Username is already taken!");
-    }
-
-    if (userRepository.existsByEmail(userDTO.getEmail())) {
-      throw new RuntimeException("Error: Email is already in use!");
-    }
-
+  public User FormToEntity(UserDTO userDTO) {
     User user = new User(
       userDTO.getUsername(), 
       userDTO.getEmail(),
-      userDTO.getPassword()
-    );
+      encoder.encode(userDTO.getPassword()));
 
     Set<String> strRoles = userDTO.getRole();
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
       Role makerRole = roleRepository.findByName(RoleEnum.ROLE_MAKER)
-          .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
       roles.add(makerRole);
     } else {
       strRoles.forEach(role -> {
@@ -78,25 +57,35 @@ public class UserService {
         }
       });
     }
-    
+
     user.setRoles(roles);
-    user.setId(userDTO.getId());
     
-    User savedUser = userRepository.save(user);
-    return savedUser;
+    return user;
   }
 
-  public Optional<User> findUserById(Long id) {
-    return userRepository.findById(id);
-  }
-
-  public String deleteUserById(Long id) {
-    userRepository.deleteById(id);
-    return "Successfully deleted user with id: " + id;
-  }
-
-  public User updateUser(User user) {
-    User savedUser = userRepository.save(user);
-    return savedUser;
+  public UserDTO EntityToForm(User entity) {
+    UserDTO userDTO = new UserDTO();
+    userDTO.setId(entity.getId());
+    userDTO.setUsername(entity.getUsername());
+    userDTO.setEmail(entity.getEmail());
+    userDTO.setPassword(entity.getPassword());
+    Set<String> userRoles = new HashSet<>();
+    entity.getRoles().forEach(role -> {
+      switch (role.getName()) {
+        case ROLE_ADMIN:
+          userRoles.add("admin");
+          break;
+        case ROLE_APPROVER:
+          userRoles.add("approver");
+          break;
+        case ROLE_CHECKER:
+          userRoles.add("checker");
+          break;
+        default:
+          userRoles.add("maker");
+        }
+    });
+    userDTO.setRole(userRoles);
+    return userDTO;
   }
 }
