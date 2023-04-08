@@ -1,19 +1,20 @@
 package id.javan.tax.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "taxes")
-public class Tax implements Serializable {
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class Tax {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
   private User user;
 
@@ -22,6 +23,7 @@ public class Tax implements Serializable {
   @Column(name = "receipt_number")
   private String receiptNumber;
 
+  @Enumerated(EnumType.STRING)
   private TaxStatusEnum status;
 
   public Tax() {

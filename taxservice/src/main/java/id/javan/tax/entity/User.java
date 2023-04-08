@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
     @UniqueConstraint(columnNames = "username"),
     @UniqueConstraint(columnNames = "email") 
   })
-public class User implements Serializable {
+public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -87,4 +87,10 @@ public class User implements Serializable {
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
+
+  public boolean hasRole(RoleEnum roleName) {
+    return roles.stream()
+      .map(Role::getName)
+      .anyMatch(roleName::equals);
+}
 }

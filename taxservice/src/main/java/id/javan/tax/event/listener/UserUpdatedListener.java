@@ -21,11 +21,13 @@ public class UserUpdatedListener {
   @Autowired
   private UserConverter userConverter;
   
-  @RabbitListener(queues = "userservice.user.updated")
+  @RabbitListener(queues = "taxservice.user.updated")
   public void onMessageReceived(UserDTO userDTO) {
     logger.info("Received message from rmq : {}", userDTO);
-    
-    User user = userConverter.FormToEntity(userDTO);
-    userService.updateUser(user);
+    try {
+      User user = userConverter.FormToEntity(userDTO);
+      userService.updateUser(user);
+    } catch (Exception e) {
+    }
   }
 }

@@ -14,41 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RmqConfig {
-  @Bean 
-  DirectExchange exchange() {
-    return new DirectExchange("userservice", true, true);
-  }
-
-  @Bean
-  Queue userServiceUserCreatedQueue() {
-    return new Queue("userservice.user.created", true);
-  }
-
-  @Bean
-  Binding userServiceUserCreatedBinding(Queue userServiceUserCreatedQueue, DirectExchange exchange) {
-    return BindingBuilder.bind(userServiceUserCreatedQueue).to(exchange).with("user.created");
-  }
-
-  @Bean
-  Queue userServiceUserUpdatedQueue() {
-    return new Queue("userservice.user.updated", true);
-  }
-
-  @Bean
-  Binding userServiceUserUpdatedBinding(Queue userServiceUserUpdatedQueue, DirectExchange exchange) {
-    return BindingBuilder.bind(userServiceUserUpdatedQueue).to(exchange).with("user.updated");
-  }
-
-  @Bean
-  Queue userServiceUserDeletedQueue() {
-    return new Queue("userservice.user.deleted", true);
-  }
-
-  @Bean
-  Binding userServiceUserDeletedBinding(Queue userServiceUserDeletedQueue, DirectExchange exchange) {
-    return BindingBuilder.bind(userServiceUserDeletedQueue).to(exchange).with("user.deleted");
-  }
-
   @Bean
   public MessageConverter jsonMessageConverter() {
     return new Jackson2JsonMessageConverter();

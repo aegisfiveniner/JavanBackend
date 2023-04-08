@@ -16,10 +16,13 @@ public class UserCreatedListener {
   @Autowired
   private UserService userService;
   
-  @RabbitListener(queues = "userservice.user.created")
+  @RabbitListener(queues = "taxservice.user.created")
   public void onMessageReceived(UserDTO userDTO) {
     logger.info("Received message from rmq : {}", userDTO);
-    
-    userService.createUser(userDTO);
+    try {
+      userService.createUser(userDTO);  
+    } catch (Exception e) {
+      throw e;
+    }
   }
 }

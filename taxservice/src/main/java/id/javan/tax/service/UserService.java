@@ -90,6 +90,10 @@ public class UserService {
     return userRepository.findById(id);
   }
 
+  public Optional<User> findUserByUsername(String username) {
+    return userRepository.findByUsername(username);
+  }
+
   public String deleteUserById(Long id) {
     userRepository.deleteById(id);
     return "Successfully deleted user with id: " + id;

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import id.javan.user.dto.UserDTO;
 import id.javan.user.entity.Role;
@@ -12,6 +13,7 @@ import id.javan.user.entity.RoleEnum;
 import id.javan.user.entity.User;
 import id.javan.user.repository.RoleRepository;
 
+@Component
 public class UserConverter {
   @Autowired
   private PasswordEncoder encoder;

@@ -15,10 +15,13 @@ public class UserDeletedListener {
   @Autowired
   private UserService userService;
   
-  @RabbitListener(queues = "userservice.user.deleted")
+  @RabbitListener(queues = "taxservice.user.deleted")
   public void onMessageReceived(Long id) {
     logger.info("Received message from rmq : {}", id);
 
-    userService.deleteUserById(id);
+    try {
+      userService.deleteUserById(id);
+    } catch (Exception e) {
+    }
   }
 }

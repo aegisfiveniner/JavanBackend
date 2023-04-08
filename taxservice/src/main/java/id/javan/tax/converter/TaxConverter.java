@@ -1,18 +1,17 @@
 package id.javan.tax.converter;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import id.javan.tax.dto.TaxDTO;
-import id.javan.tax.dto.UserDTO;
 import id.javan.tax.entity.Tax;
 import id.javan.tax.entity.TaxStatusEnum;
 import id.javan.tax.entity.User;
 import id.javan.tax.repository.UserRepository;
 
+@Component
 public class TaxConverter {
   @Autowired
   private UserRepository userRepository;

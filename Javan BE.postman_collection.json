@@ -57,7 +57,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+							"raw": "{\n    \"username\": \"approver\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,7 +106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"checker\",\n    \"email\": \"checker@mail.com\",\n    \"role\": [\"checker\"],\n    \"password\": \"password\"\n}",
+							"raw": "{\n    \"username\": \"approver\",\n    \"email\": \"approver@mail.com\",\n    \"role\": [\"approver\"],\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -151,7 +151,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "6"
 								}
 							]
 						}
@@ -165,7 +165,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"email\": \"admin@mail.com\",\n    \"password\": \"password\",\n    \"role\": \"admin\"\n}",
+							"raw": "{\n    \"id\": 5,\n    \"username\": \"maker\",\n    \"email\": \"newmaker1@mail.com\",\n    \"role\": \"maker\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -184,7 +184,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "5"
 								}
 							]
 						}
@@ -208,7 +208,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "5"
 								}
 							]
 						}
@@ -255,7 +255,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"receiptNumber\": \"123\",\n    \"status\": \"draft\"\n}",
+							"raw": "{\n    \"receiptNumber\": \"123345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -303,7 +303,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "{{taxId}}"
+									"value": "1"
 								}
 							]
 						}
@@ -317,7 +317,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"status\": \"approve\"\n}",
+							"raw": "{\n    \"status\": \"APPROVED\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -337,7 +337,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "2"
 								}
 							]
 						}
@@ -391,6 +391,10 @@
 		{
 			"key": "accessToken",
 			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDg5NzEyNCwiZXhwIjoxNjgwOTgzNTI0fQ.JL5dG1v2fPgLqpyfZg1HZ7I5X7Ng17DEKo5dpkD5YfoltF79Ea97KwnQO3d2ZP8mANYHrexgpeBtZ3eWn7-CVA"
+		},
+		{
+			"key": "taxId",
+			"value": ""
 		}
 	]
 }

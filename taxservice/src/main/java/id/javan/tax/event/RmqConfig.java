@@ -21,7 +21,7 @@ public class RmqConfig {
 
   @Bean
   Queue userServiceUserCreatedQueue() {
-    return new Queue("userservice.user.created", true);
+    return new Queue("taxservice.user.created", true);
   }
 
   @Bean
@@ -31,7 +31,7 @@ public class RmqConfig {
 
   @Bean
   Queue userServiceUserUpdatedQueue() {
-    return new Queue("userservice.user.updated", true);
+    return new Queue("taxservice.user.updated", true);
   }
 
   @Bean
@@ -41,7 +41,7 @@ public class RmqConfig {
 
   @Bean
   Queue userServiceUserDeletedQueue() {
-    return new Queue("userservice.user.deleted", true);
+    return new Queue("taxservice.user.deleted", true);
   }
 
   @Bean

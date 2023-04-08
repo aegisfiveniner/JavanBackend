@@ -3,8 +3,6 @@ package id.javan.tax.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.management.RuntimeErrorException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +23,10 @@ public class TaxService {
 
   public List<Tax> getAllTaxes() {
     return taxRepository.findAll();
+  }
+
+  public List<Tax> getAllTaxesForApprover() {
+    return taxRepository.findByStatus(TaxStatusEnum.APPROVED);
   }
 
   public Tax createTax(TaxDTO taxDTO) {
