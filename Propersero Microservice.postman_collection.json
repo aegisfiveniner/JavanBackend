@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "d0b898ec-93be-4492-82ff-b66fbd2b4896",
+		"name": "Propersero Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25690456"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login usermanagement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"\",\r\n    \"password\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_url}}/auth",
+							"host": [
+								"{{user_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login taxreport",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"\",\r\n    \"password\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_url}}/auth",
+							"host": [
+								"{{user_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usermanagement",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/crud/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"crud",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Producer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/crud/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"crud",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBqYXZhbi5jby5pZCIsInBlcm1pc3Npb24iOlsiUk9MRV9BRE1JTiJdLCJleHAiOjE2ODExMzUyMzMsImlhdCI6MTY4MTEwNjQzM30.B7O1UNNSqEl11EewcLbdarizufAEHQZPbTPLIWfPvHxejg4UWYB0VfBc4r3yvCCpGCQfvc6Ras7nrKPjHP8YEQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"ucuf22yahoo.com\",\r\n    \"password\":\"asdf1234\",\r\n    \"role\":\"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/crud/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"crud",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/crud/user/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"crud",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "02f94a8f-ffa4-48b0-9ef4-1934d2bcea81"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "taxreportmanagement",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}:{{port}}/{{context}}/user",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{context}}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"\",\r\n    \"password\":\"\",\r\n    \"role\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user_url}}/user",
+									"host": [
+										"{{user_url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBqYXZhbi5jby5pZCIsInBlcm1pc3Npb24iOlsiUk9MRV9BRE1JTiJdLCJleHAiOjE2ODExNjIxNDIsImlhdCI6MTY4MTEzMzM0Mn0.js2_3vpIOXKwoITXOMnhZHTbrdXiCGHbSCui6GudHei7KYu_cu2Uag9naJ_reWvgMiLzo4OHUev10yoA65KkuQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_tax}}/crud/user/:id",
+									"host": [
+										"{{url_tax}}"
+									],
+									"path": [
+										"crud",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "97989a9a-6bf6-4e2a-a60e-54f3a0b4afa3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Tax Report",
+					"item": [
+						{
+							"name": "Tax Report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{tax_report_url}}/tax-report",
+									"host": [
+										"{{tax_report_url}}"
+									],
+									"path": [
+										"tax-report"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Tax",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"receiptNo\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{tax_report_url}}/tax-report",
+									"host": [
+										"{{tax_report_url}}"
+									],
+									"path": [
+										"tax-report"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{tax_report_url}}/tax-report/:id",
+									"host": [
+										"{{tax_report_url}}"
+									],
+									"path": [
+										"tax-report",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Status Tax",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{tax_report_url}}/tax-report/:id/status",
+									"host": [
+										"{{tax_report_url}}"
+									],
+									"path": [
+										"tax-report",
+										":id",
+										"status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
