@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.alurkerja.crud:alurkerja-crud:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alurkerja/crud/alurkerja-crud/1.0.0-SNAPSHOT/alurkerja-crud-1.0.0-20220923.024608-94.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alurkerja/crud/alurkerja-crud/1.0.0-SNAPSHOT/alurkerja-crud-1.0.0-20220923.024608-94-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/alurkerja/crud/alurkerja-crud/1.0.0-SNAPSHOT/alurkerja-crud-1.0.0-20220923.024608-94-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
