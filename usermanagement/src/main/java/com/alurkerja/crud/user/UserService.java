@@ -1,22 +1,19 @@
 package com.alurkerja.crud.user;
 
-import com.alurkerja.core.entity.CrudEntity;
 import com.alurkerja.core.repository.CrudRepository;
 import com.alurkerja.core.service.CrudService;
 import com.alurkerja.spec.entity.BaseDto;
 import com.alurkerja.util.PasswordUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Slf4j
 @Service
 public class UserService extends CrudService<User, UserDto, UserRepository> {
+
     @Autowired
     PasswordUtil passwordUtil;
-
     protected UserService(UserRepository simpleJpaRepository) {
         super(simpleJpaRepository);
     }

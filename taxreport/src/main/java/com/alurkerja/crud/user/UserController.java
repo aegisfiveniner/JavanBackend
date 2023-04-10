@@ -58,13 +58,14 @@ public class UserController extends CrudController<User, UserDto, UserService, U
 
     @Override
     @PreAuthorize("hasAnyRole ('ROLE_ADMIN')")
-    public ResponseEntity<Object> create( UserDto dto) throws AlurKerjaException {
+    public ResponseEntity<Object> create(@RequestBody UserDto dto) throws AlurKerjaException {
+        System.err.println(dto.getEmail());
         return super.create(dto);
     }
 
     @Override
     @PreAuthorize("hasAnyRole ('ROLE_ADMIN')")
-    public ResponseEntity<Object> update(UUID id, @Valid UserDto dto) throws AlurKerjaException {
+    public ResponseEntity<Object> update(UUID id,@RequestBody @Valid UserDto dto) throws AlurKerjaException {
         return super.update(id, dto);
     }
 

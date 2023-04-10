@@ -1,4 +1,4 @@
-package com.alurkerja.crud.tax;
+package com.alurkerja.crud.user;
 
 import com.alurkerja.core.controller.CrudController;
 import com.alurkerja.core.exception.AlurKerjaException;
@@ -19,19 +19,19 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/crud/tax")
-public class TaxController extends CrudController<Tax, TaxDto, TaxService, TaxRepository> {
+@RequestMapping("/crud/user")
+public class UserController extends CrudController<User, UserDto, UserService, UserRepository> {
 
-    protected TaxController(TaxService taxService) {
-        super(taxService);
+    protected UserController(UserService userService) {
+        super(userService);
     }
 
     @PostMapping("/excel")
     public ResponseEntity<Object> createFromFile(MultipartFile file) throws IOException, InvalidFormatException {
-        TaxFromExcel taxFromExcel = new TaxFromExcel();
-        List<Tax> categories = taxFromExcel.read(file.getInputStream());
-        for(Tax tax : categories){
-            this.crudService.create(tax);
+        UserFromExcel userFromExcel = new UserFromExcel();
+        List<User> categories = userFromExcel.read(file.getInputStream());
+        for(User user : categories){
+            this.crudService.create(user);
         }
         return success(file.getOriginalFilename() + " was uploaded");
     }
@@ -40,11 +40,11 @@ public class TaxController extends CrudController<Tax, TaxDto, TaxService, TaxRe
     public void exportToExcell(HttpServletResponse httpServletResponse) throws IOException {
         OutputStream outputStream = httpServletResponse.getOutputStream();
 
-        List<Tax> categories = this.crudService.findAll();
-        TaxToExcel taxToExcel = new TaxToExcel(categories);
-        taxToExcel.export(outputStream);
+        List<User> categories = this.crudService.findAll();
+        UserToExcel userToExcel = new UserToExcel(categories);
+        userToExcel.export(outputStream);
         httpServletResponse.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=\"tax.xlsx\"");
+        httpServletResponse.setHeader("Content-Disposition", "attachment;filename=\"user.xlsx\"");
 
         outputStream.flush();
         httpServletResponse.flushBuffer();
@@ -57,20 +57,20 @@ public class TaxController extends CrudController<Tax, TaxDto, TaxService, TaxRe
     }
 
     @Override
-    @PreAuthorize("hasAnyRole ('ROLE_MAKER')")
-    public ResponseEntity<Object> create(@RequestBody @Valid TaxDto dto) throws AlurKerjaException {
+    @PreAuthorize("hasAnyRole ('ROLE_ADMIN')")
+    public ResponseEntity<Object> create(@RequestBody @Valid UserDto dto) throws AlurKerjaException {
         return super.create(dto);
     }
 
     @Override
-    @PreAuthorize("hasAnyRole ('ROLE_CHECKER', 'ROLE_APPROVER')")
-    public ResponseEntity<Object> get(UUID id) {
-        return super.get(id);
+    @PreAuthorize("hasAnyRole ('ROLE_ADMIN')")
+    public ResponseEntity<Object> update(UUID id, @RequestBody @Valid UserDto dto) throws AlurKerjaException {
+        return super.update(id, dto);
     }
 
     @Override
-    @PreAuthorize("hasAnyRole ('ROLE_CHECKER')")
-    public ResponseEntity<Object> update(UUID id, @RequestBody @Valid TaxDto dto) throws AlurKerjaException {
-        return super.update(id, dto);
+    @PreAuthorize("hasAnyRole ('ROLE_ADMIN')")
+    public ResponseEntity<Object> delete(UUID id) throws AlurKerjaException {
+        return super.delete(id);
     }
 }
