@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "352bd445-75ee-42eb-b71b-f41d5ba13420",
+		"name": "Pajak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12960425"
+	},
+	"item": [
+		{
+			"name": "Maker",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userId",
+								"value": "maker@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "maker",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "MAKER",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"noResi\" : \"A16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pajakUrl}}/pajak",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checker",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "checker@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "checker",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "CHECKER",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/check",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "checker@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "checker",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "CHECKER",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/check/:id",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								"check",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checked",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userId",
+								"value": "checker@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "checker",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "CHECKER",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/check/:id",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								"check",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Approver",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "approver@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "approver",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "APPROVER",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/approve",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "approver@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "approver",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "APPROVER",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/approve/:id",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								"approve",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checked",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userId",
+								"value": "approver@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "approver",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "APPROVER",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/approve/:id",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								"approve",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Monitoring",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "maker@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "maker",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "MAKER",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{pajakUrl}}/pajak",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "userId",
+								"value": "maker@gmail.com",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "maker",
+								"type": "text"
+							},
+							{
+								"key": "role",
+								"value": "MAKER",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{pajakUrl}}/pajak/:id",
+							"host": [
+								"{{pajakUrl}}"
+							],
+							"path": [
+								"pajak",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
