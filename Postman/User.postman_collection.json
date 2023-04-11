@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "9237cdb4-4f29-4f44-a671-6d79b710ad10",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12960425"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "userId",
+						"value": "admin@gmail.com",
+						"type": "text"
+					},
+					{
+						"key": "name",
+						"value": "ADMIN",
+						"type": "text"
+					},
+					{
+						"key": "role",
+						"value": "ADMIN",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{userUrl}}/crud/user",
+					"host": [
+						"{{userUrl}}"
+					],
+					"path": [
+						"crud",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "userId",
+						"value": "admin@gmail.com",
+						"type": "text"
+					},
+					{
+						"key": "name",
+						"value": "ADMIN",
+						"type": "text"
+					},
+					{
+						"key": "role",
+						"value": "ADMIN",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{userUrl}}/crud/user/:id",
+					"host": [
+						"{{userUrl}}"
+					],
+					"path": [
+						"crud",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "userId",
+						"value": "admin@gmail.com",
+						"type": "text"
+					},
+					{
+						"key": "name",
+						"value": "ADMIN",
+						"type": "text"
+					},
+					{
+						"key": "role",
+						"value": "ADMIN",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"approver@gmail.com\",\r\n    \"password\" : \"1234\",\r\n    \"name\" : \"approver\",\r\n    \"role\" : \"APPROVER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{userUrl}}/crud/user",
+					"host": [
+						"{{userUrl}}"
+					],
+					"path": [
+						"crud",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
